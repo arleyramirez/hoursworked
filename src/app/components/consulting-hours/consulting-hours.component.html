@@ -1,0 +1,44 @@
+<h2>Consulta de horas trabajadas</h2>
+<form [formGroup]="consultingHoursForm" (ngSubmit)="getHours()">
+  <div class="form-group">
+    <label>Identificaci&oacute;n del t&eacute;cnico</label>
+    <input type="text" formControlName="idTechnicalConsulting" class="form-control">
+    <mat-error *ngIf="!consultingHoursForm.controls.idTechnicalConsulting.valid">Campo requerido</mat-error>
+  </div>
+  <div class="form-group">
+    <label>Semana n&uacute;mero</label>
+    <input type="number" formControlName="numberWeek" class="form-control">
+    <mat-error *ngIf="!consultingHoursForm.controls.numberWeek.valid">Campo requerido</mat-error>
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="consultingHoursForm.invalid">Consultar</button>
+</form>
+<h2>Resumen horas trabajadas</h2>
+<h4>Identificación del técnico: {{resultHoursWorked.idTechnical}}</h4>
+<h4>Número de la semana: {{resultHoursWorked.weekNumber}}</h4>
+<h4>Total horas trabajada en la semana: {{resultHoursWorked.totalHours}}</h4>
+<hr>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Horas dia</th>
+        <th>Horas noche</th>
+        <th>Horas dominicales</th>
+        <th>Extras dia</th>
+        <th>Extras noche</th>
+        <th>Extra dominicales</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="resultHoursWorked">
+        <td>{{resultHoursWorked.dayHours}}</td>
+        <td>{{resultHoursWorked.nightHours}}</td>
+        <td>{{resultHoursWorked.sundayHours}}</td>
+        <td>{{resultHoursWorked.extraDayHours}}</td>
+        <td>{{resultHoursWorked.extraNightHours}}</td>
+        <td>{{resultHoursWorked.extraSundayHours}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

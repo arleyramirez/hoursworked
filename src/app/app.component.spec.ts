@@ -11,10 +11,11 @@ import { HoursWorkedService } from './services/hours-worked.service';
 import { HoursWorkedServiceMock } from './shared/mocks/hours-worked.service.mock';
 import { serviceHours } from './shared/mocks/serviceHours.mock';
 
-describe('AppComponent', () => {
+fdescribe('AppComponent', () => {
   let app: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
   const hoursWorkedServiceMock = new HoursWorkedServiceMock();
+  
   beforeEach(async () => {
    
     await TestBed.configureTestingModule({
@@ -54,7 +55,7 @@ describe('AppComponent', () => {
     debugger
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('.container')?.textContent).toContain('Registro');
-  });*/
+  });
 
   describe('[Form validations]', () => {
     describe('Control "idReport"', () => {
@@ -129,5 +130,5 @@ describe('AppComponent', () => {
 
     });
 
-  });
+  });*/
 });

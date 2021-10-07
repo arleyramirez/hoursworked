@@ -9,10 +9,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
-
+import { ConsultingHoursComponent } from './components/consulting-hours/consulting-hours.component';
+import { CreateServiceComponent } from './components/create-service/create-service.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ConsultingHoursComponent,
+    CreateServiceComponent
   ],
   imports: [
     BrowserModule,

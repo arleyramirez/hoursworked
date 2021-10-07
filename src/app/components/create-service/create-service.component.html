@@ -1,0 +1,47 @@
+<h2>Registro de servicios</h2>
+<form [formGroup]="hoursWorkedForm" (ngSubmit)="saveService()">
+  <div class="form-group">
+    <label>Identificaci&oacute;n del reporte</label>
+    <input type="text" formControlName="idReport" class="form-control">
+    <mat-error *ngIf="!hoursWorkedForm.controls.idReport.valid">Campo requerido</mat-error>
+  </div>
+  <div class="form-group">
+    <label>Identificaci&oacute;n del t&eacute;cnico</label>
+    <input type="text" formControlName="idTechnical" class="form-control">
+    <mat-error *ngIf="!hoursWorkedForm.controls.idTechnical.valid">Campo requerido</mat-error>
+  </div>
+  <div>
+    <label>Fecha y hora inicial del servicio</label>
+    <input type="datetime-local" formControlName="startDate" class="form-control">
+    <mat-error *ngIf="!hoursWorkedForm.controls.startDate.valid">Campo requerido</mat-error>
+  </div>
+  <div>
+    <label for="endDate">Fecha y hora final del servicio</label>
+    <input type="datetime-local" formControlName="endDate" class="form-control">
+    <mat-error *ngIf="hoursWorkedForm.controls.endDate.hasError('required')">Campo requerido</mat-error>
+    <mat-error *ngIf="hoursWorkedForm.controls.endDate.hasError('oldDate')">La fecha fin debe ser mayor a la hora inicio
+      del servicio</mat-error>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="hoursWorkedForm.invalid">Guardar</button>
+</form>
+
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Id Reporte</th>
+        <th>Id Tecnico</th>
+        <th>Fecha y hora inicial del servicio</th>
+        <th>Fecha y hora final del servicio</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="resultSaveHoursWorked.length>0">
+        <td>{{resultSaveHoursWorked[0].idReport}}</td>
+        <td>{{resultSaveHoursWorked[0].idTechnical}}</td>
+        <td>{{resultSaveHoursWorked[0].startDate}}</td>
+        <td>{{resultSaveHoursWorked[0].endDate}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
